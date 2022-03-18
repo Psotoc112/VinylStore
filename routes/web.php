@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+/* Home */
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+
+
+/* Products */
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
 
@@ -25,5 +31,10 @@ Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->na
 
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
+/* User */
+
+Route::get('/user', 'App\Http\Controllers\UserController@index')->name("user.index");
+
+Route::get('/user/register', 'App\Http\Controllers\UserController@register')->name("user.register");
 
 
