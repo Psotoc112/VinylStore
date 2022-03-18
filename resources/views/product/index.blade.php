@@ -1,0 +1,58 @@
+@extends('layouts.app')
+
+@section('title', $viewData["title"])
+
+@section('subtitle', $viewData["subtitle"])
+
+@section('content')
+
+<div class="row">
+
+
+@php
+
+    $i = 1
+
+@endphp
+
+@foreach ($viewData["products"] as $product)
+
+<div class="col-md-4 col-lg-3 mb-2">
+
+<div class="card">
+
+<img src="{{ URL::to('/assets/img/vynil.png') }}" class="card-img-top img-card">
+
+<div class="card-body text-center">
+
+<a href="{{ route('product.show', ['id'=> $product["id"]]) }}" class="btn bg-primary text-white">{{ $product["title"] }}</a>
+
+<br></br>
+
+@if ($i < 3 ) <h5><u>{{ $product["id"] }}</u></h5> @endif
+
+@if ($i > 2 ) <h5>{{ $product["id"] }}</h5> @endif
+
+@php
+$i += 1
+@endphp
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+@endforeach
+
+</div>
+
+@endsection
