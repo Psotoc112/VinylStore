@@ -6,14 +6,19 @@
 
 @section('content')
 
+
+<form method="GET">
+    <input id="search" name="search" type="text" placeholder="Type here">
+    <input id="submit" type="submit" value="Search">
+    </form>
+
+
+ <br>
+    
 <div class="row">
 
 
-@php
 
-    $i = 1
-
-@endphp
 
 @foreach ($viewData["products"] as $product)
 
@@ -29,13 +34,11 @@
 
 <br></br>
 
-@if ($i < 3 ) <h5><u>{{ $product["id"] }}</u></h5> @endif
 
-@if ($i > 2 ) <h5>{{ $product["id"] }}</h5> @endif
 
-@php
-$i += 1
-@endphp
+
+
+
 
 
 

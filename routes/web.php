@@ -25,16 +25,18 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
 
-Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name("product.create");
+
 
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
 
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
-/* User */
 
-Route::get('/user', 'App\Http\Controllers\UserController@index')->name("user.index");
+Route::middleware('admin')->group(function () {
 
-Route::get('/user/register', 'App\Http\Controllers\UserController@register')->name("user.register");
+    Route::get('/admin/products/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name("admin.product.create");
+
+    });
 
 
+Auth::routes();
