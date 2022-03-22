@@ -25,7 +25,7 @@ class Product extends Model
         return $this->hasMany(Item::class);
     }
     public function getItems()
-    {
+    { 
         return $this->items;
     }
     public function setItems($items)

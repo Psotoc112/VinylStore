@@ -54,6 +54,8 @@ aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navi
 
 @else
 
+<a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
+
 <form id="logout" action="{{ route('logout') }}" method="POST">
 
 <a role="button" class="nav-link active"
