@@ -34,7 +34,11 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 
 Route::middleware('admin')->group(function () {
 
-    Route::get('/admin/products/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name("admin.product.create");
+    Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+
+    Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.products.index");
+
+   /* Route::get('/admin/products/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name("admin.product.create"); */
 
     });
 
