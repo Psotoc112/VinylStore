@@ -81,6 +81,18 @@ return back();
 
 }
 
+public function search(Request $request)
+    {
+        if($request->filled('search')){
+            $product = Product::search($request->search)->get();
+        }else{
+            $product = Product::get()->take('5');
+        }
+        $viewData = [];
+        $viewData['products'] = $product;
+          
+        return view('product.search')->with("viewData", $viewData);
+    }
 
 
 

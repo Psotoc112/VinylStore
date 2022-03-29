@@ -7,9 +7,12 @@
 @section('content')
 
 
-<form method="GET">
-    <input id="search" name="search" type="text" placeholder="Type here">
+<form method="GET" class="mb-5" action="{{ route('product.search') }}">
+
+    <div>
+    <input id="search" name="search" type="text" placeholder="Type here" value="{{ request()->get('search') }}" aria-label="Search" aria-describedby="submit">
     <input id="submit" type="submit" value="Search">
+</div>
     </form>
 
 
