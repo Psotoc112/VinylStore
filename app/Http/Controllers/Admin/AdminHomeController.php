@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 class AdminHomeController extends Controller
 
 {
@@ -15,4 +17,3 @@ class AdminHomeController extends Controller
         return view('admin.home.index')->with("viewData", $viewData);
     }
 }
-
