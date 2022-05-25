@@ -25,6 +25,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
 
+Route::get('/liquorShop', 'App\Http\Controllers\LiquorController@index')->name("liquor.index");   
 
 
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
@@ -59,6 +60,9 @@ Route::middleware('admin')->group(function () {
  
 
     });
+
+
+ 
 
 
 Auth::routes();
