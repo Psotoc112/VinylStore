@@ -13,29 +13,27 @@
     <input id="submit" type="submit" value="Search" class="btn btn-default">
 
 
- <br>
-    
+<br>
+
 <div class="row">
 
     <a href="{{route('product.search')}}">Availables</a>
 
 
 
-@foreach ($viewData["products"] as $product)
+    @foreach ($viewData["products"] as $product)
 
-<div class="col-md-4 col-lg-3 mb-2">
+    <div class="col-md-4 col-lg-3 mb-2">
 
-<div class="card">
+        <div class="card">
 
-<img src="{{ URL::to('/assets/img/vynil.png') }}" class="card-img-top img-card">
+            <img src="{{ URL::to('/assets/img/vynil.png') }}" class="card-img-top img-card">
 
-<div class="card-body text-center">
+            <div class="card-body text-center">
 
-<a href="{{ route('product.show', ['id'=> $product["id"]]) }}" class="btn bg-primary text-white">{{ $product["title"] }}</a>
+                <a href="{{ route('product.show', ['id'=> $product["id"]]) }}" class="btn bg-primary text-white">{{ $product["title"] }}</a>
 
-<br></br>
-
-
+                <br></br>
 
 
 
@@ -49,13 +47,15 @@
 
 
 
-</div>
 
-</div>
 
-</div>
+            </div>
 
-@endforeach
+        </div>
+
+    </div>
+
+    @endforeach
 
 </div>
 

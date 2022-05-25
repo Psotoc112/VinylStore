@@ -32,7 +32,7 @@ Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->na
 
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
-Route::get('/products/search','App\Http\Controllers\ProductController@search')->name("product.search");
+Route::get('/products/search', 'App\Http\Controllers\ProductController@search')->name("product.search");
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name("cart.delete");
@@ -41,7 +41,7 @@ Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");
     Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
-    });
+});
 
 
 Route::middleware('admin')->group(function () {
@@ -56,10 +56,7 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.products.edit");
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
-
- 
-
-    });
+});
 
 
  
