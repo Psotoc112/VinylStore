@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 class AdminHomeController extends Controller
 
 {
@@ -10,8 +12,8 @@ class AdminHomeController extends Controller
     public function index()
 
     {
-        $user = Auth::user();
-        return view('admin.home.index')->with("user", $user);
+        $viewData = [];
+        $viewData["title"] = "Admin Page - Admin - Online Store";
+        return view('admin.home.index')->with("viewData", $viewData);
     }
 }
-

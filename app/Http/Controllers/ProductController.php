@@ -11,77 +11,82 @@ class ProductController extends Controller
 
 
 
-public function index()
+    public function index()
 
-{
+    {
 
-$viewData = [];
+        $viewData = [];
 
-$viewData["title"] = "Products - Online Store";
+        $viewData["title"] = "Products - Online Store";
 
-$viewData["subtitle"] = "List of products";
+        $viewData["subtitle"] = "List of products";
 
-$viewData["products"] = Product::all();
+        $viewData["products"] = Product::all();
 
-return view('product.index')->with("viewData", $viewData);
+        return view('product.index')->with("viewData", $viewData);
+    }
 
-}
+    public function show($id)
 
-public function show($id)
+    {
 
-{
+        $viewData = [];
 
-$viewData = [];
+        $product =  Product::findOrFail($id);
 
-$product =  Product::findOrFail($id);
+        $viewData["title"] = $product["title"] . " - Online Store";
 
-$viewData["title"] = $product["title"]." - Online Store";
+        $viewData["subtitle"] = $product["title"] . " - Product information";
 
-$viewData["subtitle"] = $product["title"]." - Product information";
+        $viewData["product"] = $product;
 
-$viewData["product"] = $product;
+        return view('product.show')->with("viewData", $viewData);
+    }
 
-return view('product.show')->with("viewData", $viewData);
+    public function create()
 
-}
+    {
 
-public function create()
+        $viewData = []; //to be sent to the view
 
-{
+        $viewData["title"] = "Create product";
 
-$viewData = []; //to be sent to the view
+        return view('product.create')->with("viewData", $viewData);
+    }
 
-$viewData["title"] = "Create product";
+    public function save(Request $request)
 
-return view('product.create')->with("viewData",$viewData);
+    {
 
-}
+        $request->validate([
 
-public function save(Request $request)
+            "title" => "required",
 
-{
+            "price" => "required",
 
-$request->validate([
+            "description" => "required",
 
-"title" => "required",
+            "quantity" => "required"
 
-"price" => "required",
+        ]);
 
-"description" => "required",
-
-"quantity" => "required"
-
-]);
-
-Product::create($request->only(["title","price","description","quantity"]));
-
-
- 
-return back();
-
-}
+        Product::create($request->only(["title", "price", "description", "quantity"]));
 
 
 
+        return back();
+    }
 
+    public function search(Request $request)
+    {
+        if ($request->filled('search')) {
+            $product = Product::search($request->search)->get();
+        } else {
+            $product = Product::get()->take('5');
+        }
+        $viewData = [];
+        $viewData['products'] = $product;
+
+        return view('product.search')->with("viewData", $viewData);
+    }
 }
