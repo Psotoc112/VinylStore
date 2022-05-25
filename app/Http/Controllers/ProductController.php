@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Symfony\Component\Console\Input\Input;
 
 class ProductController extends Controller
 
@@ -15,6 +16,7 @@ class ProductController extends Controller
 
     {
 
+
         $viewData = [];
 
         $viewData["title"] = "Products - Online Store";
@@ -25,6 +27,7 @@ class ProductController extends Controller
 
         return view('product.index')->with("viewData", $viewData);
     }
+
 
     public function show($id)
 
@@ -77,16 +80,21 @@ class ProductController extends Controller
         return back();
     }
 
-    public function search(Request $request)
+    public function search()
     {
-        if ($request->filled('search')) {
-            $product = Product::search($request->search)->get();
-        } else {
-            $product = Product::get()->take('5');
-        }
-        $viewData = [];
-        $viewData['products'] = $product;
+        {
 
-        return view('product.search')->with("viewData", $viewData);
+        
+            $viewData = [];
+
+            $viewData["title"] = "Products - Online Store";
+    
+            $viewData["subtitle"] = "List of products";
+    
+            $viewData["products"] = Product::all();
+    
+            return view('product.index')->with("viewData", $viewData);
+        }
+        
     }
 }

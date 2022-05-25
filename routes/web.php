@@ -25,6 +25,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
 
+Route::get('/liquorShop', 'App\Http\Controllers\LiquorController@index')->name("liquor.index");   
 
 
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
@@ -56,6 +57,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.products.edit");
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
 });
+
+
+ 
 
 
 Auth::routes();
